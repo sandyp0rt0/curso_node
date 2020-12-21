@@ -1,19 +1,17 @@
-var express = require("express")();
+var app = require("./config/server");
 
-express.set("view engine","ejs");
+ var rotaHome = require("./app/routes/home");
 
-express.get("/", (req,res) => {
-    res.render("home/index");
-});
-express.get("/admin", (req,res) => {
-    res.render("admin/form")
-});
+rotaHome(app);
 
-express.get("/coisas", (req,res) => {
-    res.render("coisas/coisas");
-});
+var rotaCoisas = require("./app/routes/coisas");
+rotaCoisas(app);
 
 
-express.listen(3000, () => {
+var rotaAdmin = require("./app/routes/admin");
+rotaAdmin(app);
+
+
+app.listen(3000, () => {
     console.log("Servidor rodando com Express");
 });
