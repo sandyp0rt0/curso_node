@@ -7,5 +7,29 @@
 </head>
 <body>
     <h1>Coisas</h1>
+
+    <table>
+        
+        <tr>
+            <td>ID</td>
+            <td>Título</td>
+            <td>Tipo</td>
+        </tr>
+
+        <% 
+            for(var i =0; i<coisas.length;i++){
+            %>
+            <tr>
+                <td><%= coisas[i].id_coisa %></td>
+                <td><%= coisas[i].titulo %></td>
+                <td><%= coisas[i].tipo_coisa %></td>
+            <%
+            }
+        %>
+
+    </table>
+
+
+
 </body>
 </html>

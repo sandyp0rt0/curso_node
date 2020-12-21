@@ -1,21 +1,15 @@
+
+var conn = require("../../config/database");
+
+
 module.exports = (app) => {
 
-    
+    var db = conn();
 
     app.get("/coisas", (req,res) => {
-
-
-        var mysql = require("mysql");
-        var conn = mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: 'senharoot',
-            database: 'sandy'
+        db.query("select * from coisas",(err,result)=>{
+            res.render("coisas/coisas",{coisas:result});
         });
-
-
-        conn.query("select * from coisas",(err,result)=>{res.send(result)});
-        //res.send("coisas/coisas");
     });
 }
 
